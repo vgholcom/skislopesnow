@@ -1,0 +1,2 @@
+rootProject.name='Ski Slopes Now'
+include ':app'
