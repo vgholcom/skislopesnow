@@ -17,11 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements SportAdapter.Callback {
+public class MainActivity extends AppCompatActivity implements ResortAdapter.Callback {
 
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
-    SportAdapter mSportAdapter;
+    ResortAdapter mResortAdapter;
 
     LinearLayoutManager mLayoutManager;
 
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements SportAdapter.Call
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         Drawable dividerDrawable = ContextCompat.getDrawable(this, R.drawable.divider_drawable);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(dividerDrawable));
-        mSportAdapter = new SportAdapter(new ArrayList<>());
+        mResortAdapter = new ResortAdapter(new ArrayList<>());
 
         prepareDemoContent();
     }
@@ -50,15 +50,15 @@ public class MainActivity extends AppCompatActivity implements SportAdapter.Call
         new Handler().postDelayed(() -> {
             //prepare data and show loading
             CommonUtils.hideLoading();
-            ArrayList<Sport> mSports = new ArrayList<>();
-            String[] sportsList = getResources().getStringArray(R.array.sports_titles);
-            String[] sportsInfo = getResources().getStringArray(R.array.sports_info);
-            String[] sportsImage = getResources().getStringArray(R.array.sports_images);
-            for (int i = 0; i < sportsList.length; i++) {
-                mSports.add(new Sport(sportsImage[i], sportsInfo[i], "News", sportsList[i]));
+            ArrayList<Resort> mResorts = new ArrayList<>();
+            String[] resortsList = getResources().getStringArray(R.array.resorts_titles);
+            String[] resortsInfo = getResources().getStringArray(R.array.resorts_info);
+            String[] resortsImage = getResources().getStringArray(R.array.resorts_images);
+            for (int i = 0; i < resortsList.length; i++) {
+                mResorts.add(new Resort(resortsImage[i], resortsInfo[i], "News", resortsList[i]));
             }
-            mSportAdapter.addItems(mSports);
-            mRecyclerView.setAdapter(mSportAdapter);
+            mResortAdapter.addItems(mResorts);
+            mRecyclerView.setAdapter(mResortAdapter);
         }, 2000);
 
 

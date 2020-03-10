@@ -1,5 +1,6 @@
 package com.example.skislopesnow;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -18,16 +20,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class SportAdapter extends RecyclerView.Adapter<BaseViewHolder> {
-    private static final String TAG = "SportAdapter";
+public class ResortAdapter extends RecyclerView.Adapter<BaseViewHolder> {
+    private static final String TAG = "ResortAdapter";
     public static final int VIEW_TYPE_EMPTY = 0;
     public static final int VIEW_TYPE_NORMAL = 1;
 
     private Callback mCallback;
-    private List<Sport> mSportList;
+    private List<Resort> mResortList;
 
-    public SportAdapter(List<Sport> sportList) {
-        mSportList = sportList;
+    public ResortAdapter(List<Resort> resortList) {
+        mResortList = resortList;
     }
 
     public void setCallback(Callback callback) {
@@ -55,7 +57,7 @@ public class SportAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        if (mSportList != null && mSportList.size() > 0) {
+        if (mResortList != null && mResortList.size() > 0) {
             return VIEW_TYPE_NORMAL;
         } else {
             return VIEW_TYPE_EMPTY;
@@ -64,22 +66,40 @@ public class SportAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     @Override
     public int getItemCount() {
-        if (mSportList != null && mSportList.size() > 0) {
-            return mSportList.size();
+        if (mResortList != null && mResortList.size() > 0) {
+            return mResortList.size();
         } else {
             return 1;
         }
     }
 
-    public void addItems(List<Sport> sportList) {
-        mSportList.addAll(sportList);
+    public void addItems(List<Resort> resortList) {
+        mResortList.addAll(resortList);
         notifyDataSetChanged();
     }
 
     public interface Callback {
         void onEmptyViewRetryClick();
     }
+/*
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        TextView title;
 
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            title=(TextView)itemView.findViewById(R.id.list_item);
+            itemView.setClickable(true);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Context context = v.getContext();
+            Intent intent = new Intent(context, ResortActivity.class);
+            context.startActivity(intent);
+        }
+    };
+*/
     public class ViewHolder extends BaseViewHolder {
 
         @BindView(R.id.thumbnail)
@@ -106,43 +126,72 @@ public class SportAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             newsTextView.setText("");
             infoTextView.setText("");
         }
-
+/*
+        //@Override
+        public void onClick(View v) {
+            Context context = v.getContext();
+            Intent intent = new Intent(context, ResortActivity.class);
+            context.startActivity(intent);
+        }
+*/
         public void onBind(int position) {
             super.onBind(position);
 
-            final Sport mSport = mSportList.get(position);
+            final Resort mResort = mResortList.get(position);
 
-            if (mSport.getImageUrl() != null) {
+            if (mResort.getImageUrl() != null) {
                 Glide.with(itemView.getContext())
-                        .load(mSport.getImageUrl())
+                        .load(mResort.getImageUrl())
                         .into(coverImageView);
             }
 
-            if (mSport.getTitle() != null) {
-                titleTextView.setText(mSport.getTitle());
+            if (mResort.getTitle() != null) {
+                titleTextView.setText(mResort.getTitle());
             }
 
-            if (mSport.getSubTitle() != null) {
-                newsTextView.setText(mSport.getSubTitle());
+            if (mResort.getSubTitle() != null) {
+                newsTextView.setText(mResort.getSubTitle());
             }
 
-            if (mSport.getInfo() != null) {
-                infoTextView.setText(mSport.getInfo());
+            if (mResort.getInfo() != null) {
+                infoTextView.setText(mResort.getInfo());
             }
-
+            /*
             itemView.setOnClickListener(v -> {
-                if (mSport.getImageUrl() != null) {
+                if (mResort.getImageUrl() != null) {
                     try {
                         Intent intent = new Intent();
                         intent.setAction(Intent.ACTION_VIEW);
                         intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                        intent.setData(Uri.parse(mSport.getImageUrl()));
+                        intent.setData(Uri.parse(mResort.getImageUrl()));
                         itemView.getContext().startActivity(intent);
                     } catch (Exception e) {
                         Log.e(TAG, "onClick: Image url is not correct");
                     }
                 }
             });
+            */
+            itemView.setOnClickListener(v -> {
+                Context context = v.getContext();
+                Intent intent = new Intent(context, ResortActivity.class);
+                intent.putExtra("message_key", mResort.getTitle());
+                context.startActivity(intent);
+            });
+            /*
+            itemView.setOnClickListener(v -> {
+                if (mResort.getImageUrl() != null) {
+                    try {
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_VIEW);
+                        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                        intent.setData(Uri.parse(mResort.getImageUrl()));
+                        itemView.getContext().startActivity(intent);
+                    } catch (Exception e) {
+                        Log.e(TAG, "onClick: Image url is not correct");
+                    }
+                }
+            });
+             */
         }
     }
 

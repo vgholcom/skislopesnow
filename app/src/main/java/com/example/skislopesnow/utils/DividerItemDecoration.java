@@ -8,14 +8,6 @@ import android.view.View;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-/**
- * Created on : Jan 27, 2019
- * Author     : AndroidWave
- * Email    : info@androidwave.com
- */
-
-
-
 
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
 
