@@ -5,6 +5,10 @@
     <string name="sports_info_placeholder">Here is some news</string>
     <string name="empty_screen">We do not have anything\nhere right now. Please Retry</string>
     <string name="btn_retry">Retry</string>
+    <string name="create_database">Create Database</string>
+    <string name="Database">Database</string>
+    <string name="insert_data">Insert Data</string>
+    <string name="update_data">Update Data</string>
 
     <string-array name="resorts_images">
         <item>https://androidwave.com/media/images/img_baseball.jpg</item>

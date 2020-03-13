@@ -1,8 +1,11 @@
 package com.example.skislopesnow;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.skislopesnow.utils.CommonUtils;
 import com.example.skislopesnow.utils.DividerItemDecoration;
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements ResortAdapter.Cal
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
     ResortAdapter mResortAdapter;
+    private Button button;
 
     LinearLayoutManager mLayoutManager;
 
@@ -31,6 +35,13 @@ public class MainActivity extends AppCompatActivity implements ResortAdapter.Cal
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setUp();
+        button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity2();
+            }
+        });
     }
 
     private void setUp() {
@@ -62,6 +73,10 @@ public class MainActivity extends AppCompatActivity implements ResortAdapter.Cal
         }, 2000);
 
 
+    }
+    public void openActivity2() {
+        Intent intent = new Intent(this, Database.class);
+        startActivity(intent);
     }
 
     @Override
