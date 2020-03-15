@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ public class SqliteDatabase extends SQLiteOpenHelper {
 
     private static final String COLUMN_ID = "_id";
     private static final String COLUMN_RESORT = "resort";
+    private static final String COLUMN_LOC = "location";
     private static final String COLUMN_STATUS = "status";
     private static final String COLUMN_HOURS = "hours";
     private static final String COLUMN_FULLDAY = "fullday";
@@ -49,7 +51,7 @@ public class SqliteDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String	CREATE_CONTACTS_TABLE = "CREATE	TABLE " + TABLE_CONTACTS + "(" + COLUMN_ID + " INTEGER PRIMARY KEY," + COLUMN_RESORT + " TEXT," +
-                COLUMN_STATUS + " TEXT," + COLUMN_HOURS + " TEXT," + COLUMN_FULLDAY + " TEXT," + COLUMN_HALFDAY + " TEXT," +
+                COLUMN_LOC + " TEXT," +COLUMN_STATUS + " TEXT," + COLUMN_HOURS + " TEXT," + COLUMN_FULLDAY + " TEXT," + COLUMN_HALFDAY + " TEXT," +
                 COLUMN_WEATHER + " TEXT," + COLUMN_SNOW + " TEXT)";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
@@ -69,14 +71,15 @@ public class SqliteDatabase extends SQLiteOpenHelper {
             do{
                 int id = Integer.parseInt(cursor.getString(0));
                 String resort = cursor.getString(1);
-                String status = cursor.getString(2);
-                String hours = cursor.getString(3);
-                String fullday = cursor.getString(4);
-                String halfday = cursor.getString(5);
-                String weather = cursor.getString(6);
-                String snow = cursor.getString(7);
+                String loc = cursor.getString(2);
+                String status = cursor.getString(3);
+                String hours = cursor.getString(4);
+                String fullday = cursor.getString(5);
+                String halfday = cursor.getString(6);
+                String weather = cursor.getString(7);
+                String snow = cursor.getString(8);
 
-                storeContacts.add(new Contacts(id, resort, status, hours, fullday, halfday, weather, snow));
+                storeContacts.add(new Contacts(id, resort, loc, status, hours, fullday, halfday, weather, snow));
             }while (cursor.moveToNext());
         }
         cursor.close();
@@ -86,6 +89,7 @@ public class SqliteDatabase extends SQLiteOpenHelper {
     public void addContacts(Contacts contacts){
         ContentValues values = new ContentValues();
         values.put(COLUMN_RESORT, contacts.getResort());
+        values.put(COLUMN_LOC, contacts.getLoc());
         values.put(COLUMN_STATUS, contacts.getStatus());
         values.put(COLUMN_HOURS, contacts.getHours());
         values.put(COLUMN_FULLDAY, contacts.getFullday());
@@ -100,6 +104,7 @@ public class SqliteDatabase extends SQLiteOpenHelper {
     public void updateContacts(Contacts contacts){
         ContentValues values = new ContentValues();
         values.put(COLUMN_RESORT, contacts.getResort());
+        values.put(COLUMN_LOC, contacts.getLoc());
         values.put(COLUMN_STATUS, contacts.getStatus());
         values.put(COLUMN_HOURS, contacts.getHours());
         values.put(COLUMN_FULLDAY, contacts.getFullday());
@@ -118,14 +123,15 @@ public class SqliteDatabase extends SQLiteOpenHelper {
         if	(cursor.moveToFirst()){
             int id = Integer.parseInt(cursor.getString(0));
             String contactsResort = cursor.getString(1);
-            String contactsStatus = cursor.getString(2);
-            String contactsHours = cursor.getString(3);
-            String contactsFullday = cursor.getString(4);
-            String contactsHalfday = cursor.getString(5);
-            String contactsWeather = cursor.getString(6);
-            String contactsSnow = cursor.getString(7);
+            String contactsLoc = cursor.getString(2);
+            String contactsStatus = cursor.getString(3);
+            String contactsHours = cursor.getString(4);
+            String contactsFullday = cursor.getString(5);
+            String contactsHalfday = cursor.getString(6);
+            String contactsWeather = cursor.getString(7);
+            String contactsSnow = cursor.getString(8);
 
-            contacts = new Contacts(id, contactsResort, contactsStatus, contactsHours, contactsFullday, contactsHalfday, contactsWeather, contactsSnow);
+            contacts = new Contacts(id, contactsResort, contactsLoc, contactsStatus, contactsHours, contactsFullday, contactsHalfday, contactsWeather, contactsSnow);
         }
         cursor.close();
         return contacts;

@@ -25,12 +25,32 @@ public class ResortActivity extends AppCompatActivity {
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        //String message = intent.getStringExtra(MainActivity.message_key);
         int position = intent.getIntExtra("message_key", 0);
         final Contacts contacts = allContacts.get(position);
 
         // Capture the layout's TextView and set the string as its text
-        TextView textView = findViewById(R.id.textView3);
-        textView.setText(contacts.getResort());
+        TextView resortTextView = findViewById(R.id.resortName);
+        resortTextView.setText(contacts.getResort());
+
+        TextView locTextView = findViewById(R.id.resortLocation);
+        locTextView.setText(contacts.getLoc());
+
+        TextView statusTextView = findViewById(R.id.resortStatus);
+        statusTextView.setText(contacts.getStatus());
+
+        TextView hoursTextView = findViewById(R.id.resortHours);
+        hoursTextView.setText(contacts.getHours());
+
+        TextView halfTextView = findViewById(R.id.resortHalfday);
+        halfTextView.setText(contacts.getHalfday());
+
+        TextView fullTextView = findViewById(R.id.resortFullDay);
+        fullTextView.setText(contacts.getFullday());
+
+        TextView weatherTextView = findViewById(R.id.resortWeather);
+        weatherTextView.setText(contacts.getWeather());
+
+        TextView snowTextView = findViewById(R.id.resortSnow);
+        snowTextView.setText(contacts.getSnow());
     }
 }

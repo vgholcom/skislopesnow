@@ -3,6 +3,7 @@ package com.example.ski;
 public class Contacts {
     private	int	id;
     private	String resort;
+    private	String loc;
     private	String status;
     private	String hours;
     private	String fullday;
@@ -10,25 +11,27 @@ public class Contacts {
     private	String weather;
     private	String snow;
 
-    public Contacts(String resort, String status, String hours, String fullday, String halfday, String weather, String snow) {
+    public Contacts(String resort, String loc, String status, String hours, String fullday, String halfday, String weather, String snow) {
         this.resort = resort;
+        this.loc = loc;
         this.status = status;
-        this.status = hours;
-        this.status = fullday;
-        this.status = halfday;
-        this.status = weather;
-        this.status = snow;
+        this.hours = hours;
+        this.fullday = fullday;
+        this.halfday = halfday;
+        this.weather = weather;
+        this.snow = snow;
     }
 
-    public Contacts(int id, String resort, String status, String hours, String fullday, String halfday, String weather, String snow) {
+    public Contacts(int id, String resort, String loc, String status, String hours, String fullday, String halfday, String weather, String snow) {
         this.id = id;
         this.resort = resort;
+        this.loc = loc;
         this.status = status;
-        this.status = hours;
-        this.status = fullday;
-        this.status = halfday;
-        this.status = weather;
-        this.status = snow;
+        this.hours = hours;
+        this.fullday = fullday;
+        this.halfday = halfday;
+        this.weather = weather;
+        this.snow = snow;
     }
 
     public int getId() {
@@ -44,6 +47,13 @@ public class Contacts {
     }
     public void setResort(String resort) {
         this.resort = resort;
+    }
+
+    public String getLoc() {
+        return loc;
+    }
+    public void setLoc(String loc) {
+        this.resort = loc;
     }
 
     public String getStatus() {

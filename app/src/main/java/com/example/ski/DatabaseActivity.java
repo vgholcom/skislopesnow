@@ -33,6 +33,7 @@ public class DatabaseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final EditText resortField = (EditText)findViewById(R.id.resortInput);
+                final EditText locField = (EditText)findViewById(R.id.locInput);
                 final EditText statusField = (EditText)findViewById(R.id.statusInput);
                 final EditText hoursField = (EditText)findViewById(R.id.hoursInput);
                 final EditText fulldayField = (EditText)findViewById(R.id.fulldayInput);
@@ -41,6 +42,7 @@ public class DatabaseActivity extends AppCompatActivity {
                 final EditText snowField = (EditText)findViewById(R.id.snowInput);
 
                 final String resort = resortField.getText().toString();
+                final String loc = locField.getText().toString();
                 final String status = statusField.getText().toString();
                 final String hours = hoursField.getText().toString();
                 final String fullday = fulldayField.getText().toString();
@@ -48,7 +50,7 @@ public class DatabaseActivity extends AppCompatActivity {
                 final String weather= weatherField.getText().toString();
                 final String snow = snowField.getText().toString();
 
-                Contacts newContact = new Contacts(resort, status, hours, fullday, halfday, weather, snow);
+                Contacts newContact = new Contacts(resort, loc, status, hours, fullday, halfday, weather, snow);
                 databaseHelper.addContacts(newContact);
 
                 Intent intent = new Intent(DatabaseActivity.this, MainActivity.class);

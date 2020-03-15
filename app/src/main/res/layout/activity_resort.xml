@@ -8,11 +8,194 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/resortHalfday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="$$$"
+        android:textSize="18sp"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintHorizontal_bias="0.225"
+        card_view:layout_constraintStart_toEndOf="@+id/resortHalfDayText"
+        card_view:layout_constraintTop_toBottomOf="@+id/resortHours" />
+
+    <TextView
+        android:id="@+id/resortFullDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$$$"
+        android:textSize="18sp"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintHorizontal_bias="0.234"
+        card_view:layout_constraintStart_toEndOf="@+id/resortFullDayText"
+        card_view:layout_constraintTop_toBottomOf="@+id/resortHalfday" />
+
+    <TextView
+        android:id="@+id/resortHalfDayText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:text="Half Day Price:"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/resortHoursText" />
+
+    <TextView
+        android:id="@+id/resortFullDayText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:text="Full Day Price:"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/resortHalfDayText" />
+
+    <TextView
+        android:id="@+id/resortStatusText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="16dp"
+        android:text="Status:"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/resortLocation" />
+
+    <TextView
+        android:id="@+id/resortHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AM-PM"
+        android:textSize="18sp"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintHorizontal_bias="0.127"
+        card_view:layout_constraintStart_toEndOf="@+id/resortHoursText"
+        card_view:layout_constraintTop_toBottomOf="@+id/resortStatus" />
+
+    <TextView
+        android:id="@+id/resortHoursText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:text="Operational Hours:"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/resortStatusText" />
+
+    <TextView
+        android:id="@+id/resortStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Open/Closed"
+        android:textSize="18sp"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintStart_toEndOf="@+id/resortStatusText"
+        card_view:layout_constraintTop_toBottomOf="@+id/resortLocation" />
+
+    <TextView
+        android:id="@+id/resortName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:padding="5dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:text="Resort Name"
+        android:textColor="@color/colorWhite"
+        android:textSize="30sp"
+        android:textStyle="bold"
         card_view:layout_constraintEnd_toEndOf="parent"
         card_view:layout_constraintStart_toStartOf="parent"
         card_view:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/resortLocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:paddingLeft="5dp"
+        android:paddingBottom="5dp"
+        android:text="Resort Location"
+        android:textColor="@color/colorWhite"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/resortName" />
+
+    <TextView
+        android:id="@+id/weatherOvText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="26dp"
+        android:text="Current Conditions"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/resortFullDayText" />
+
+    <TextView
+        android:id="@+id/resortWeatherText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:text="Weather:"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/weatherOvText" />
+
+    <TextView
+        android:id="@+id/resortSnowText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:text="New Snow (Inches):"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/resortWeatherText" />
+
+    <TextView
+        android:id="@+id/resortWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Snow"
+        android:textSize="18sp"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintHorizontal_bias="0.532"
+        card_view:layout_constraintStart_toEndOf="@+id/resortWeatherText"
+        card_view:layout_constraintTop_toBottomOf="@+id/weatherOvText" />
+
+    <TextView
+        android:id="@+id/resortSnow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="XX"
+        android:textSize="18sp"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintHorizontal_bias="0.283"
+        card_view:layout_constraintStart_toEndOf="@+id/resortSnowText"
+        card_view:layout_constraintTop_toBottomOf="@+id/resortWeather" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
