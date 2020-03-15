@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DatabaseActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Insert Row"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Input the following fields" />
+
+        <EditText
+            android:id="@+id/resortInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:hint="Resort Name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/statusInput"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Status(open/closed)"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/hoursInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Operational hours"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/snowInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Snow(inches)"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/weatherInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Weather Condition"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/halfdayInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Adult Half Day Cost"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/fulldayInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Adult Full Day Cost"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancel" />
+
+    </LinearLayout>
+
+</RelativeLayout>

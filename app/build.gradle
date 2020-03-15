@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.example.skislopesnow"
+        applicationId "com.example.ski"
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
@@ -21,11 +21,6 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
 }
 
 dependencies {
@@ -36,16 +31,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    // TODO: double check these...
-    implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha01'
-    implementation 'com.google.android.material:material:1.2.0-alpha03'
-    implementation 'com.google.code.gson:gson:2.8.5'
-    // ButterKnife for view binding
-    implementation 'com.jakewharton:butterknife:10.1.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
-    // Glide for image loading
-    implementation 'com.github.bumptech.glide:glide:4.10.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+
+   // implementation 'com.android.support:design:28.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
+
 }

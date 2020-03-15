@@ -1,4 +1,4 @@
-package com.example.skislopesnow;
+package com.example.ski;
 
 import org.junit.Test;
 
