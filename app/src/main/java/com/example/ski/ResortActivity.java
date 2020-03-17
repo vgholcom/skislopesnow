@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class ResortActivity extends AppCompatActivity {
 
     private SqliteDatabase databaseHelper;
-    private ArrayList<Contacts> allContacts=new ArrayList<>();
+    private ArrayList<Resorts> allResorts=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,36 +21,36 @@ public class ResortActivity extends AppCompatActivity {
         setContentView(R.layout.activity_resort);
 
         databaseHelper = SqliteDatabase.getInstance(this);
-        allContacts = databaseHelper.listContacts();
+        allResorts = databaseHelper.listContacts();
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
         int position = intent.getIntExtra("message_key", 0);
-        final Contacts contacts = allContacts.get(position);
+        final Resorts resorts = allResorts.get(position);
 
         // Capture the layout's TextView and set the string as its text
         TextView resortTextView = findViewById(R.id.resortName);
-        resortTextView.setText(contacts.getResort());
+        resortTextView.setText(resorts.getResort());
 
         TextView locTextView = findViewById(R.id.resortLocation);
-        locTextView.setText(contacts.getLoc());
+        locTextView.setText(resorts.getLoc());
 
         TextView statusTextView = findViewById(R.id.resortStatus);
-        statusTextView.setText(contacts.getStatus());
+        statusTextView.setText(resorts.getStatus());
 
         TextView hoursTextView = findViewById(R.id.resortHours);
-        hoursTextView.setText(contacts.getHours());
+        hoursTextView.setText(resorts.getHours());
 
         TextView halfTextView = findViewById(R.id.resortHalfday);
-        halfTextView.setText(contacts.getHalfday());
+        halfTextView.setText(resorts.getHalfday());
 
         TextView fullTextView = findViewById(R.id.resortFullDay);
-        fullTextView.setText(contacts.getFullday());
+        fullTextView.setText(resorts.getFullday());
 
         TextView weatherTextView = findViewById(R.id.resortWeather);
-        weatherTextView.setText(contacts.getWeather());
+        weatherTextView.setText(resorts.getWeather());
 
         TextView snowTextView = findViewById(R.id.resortSnow);
-        snowTextView.setText(contacts.getSnow());
+        snowTextView.setText(resorts.getSnow());
     }
 }

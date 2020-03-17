@@ -5,11 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 
-import com.example.ski.Contacts;
+import com.example.ski.Resorts;
 
 
 public class SqliteDatabase extends SQLiteOpenHelper {
@@ -62,10 +61,10 @@ public class SqliteDatabase extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<Contacts> listContacts(){
+    public ArrayList<Resorts> listContacts(){
         String sql = "select * from " + TABLE_CONTACTS;
         SQLiteDatabase db = this.getReadableDatabase();
-        ArrayList<Contacts> storeContacts = new ArrayList<>();
+        ArrayList<Resorts> storeContacts = new ArrayList<>();
         Cursor cursor = db.rawQuery(sql, null);
         if(cursor.moveToFirst()){
             do{
@@ -79,46 +78,46 @@ public class SqliteDatabase extends SQLiteOpenHelper {
                 String weather = cursor.getString(7);
                 String snow = cursor.getString(8);
 
-                storeContacts.add(new Contacts(id, resort, loc, status, hours, fullday, halfday, weather, snow));
+                storeContacts.add(new Resorts(id, resort, loc, status, hours, fullday, halfday, weather, snow));
             }while (cursor.moveToNext());
         }
         cursor.close();
         return storeContacts;
     }
 
-    public void addContacts(Contacts contacts){
+    public void addContacts(Resorts resorts){
         ContentValues values = new ContentValues();
-        values.put(COLUMN_RESORT, contacts.getResort());
-        values.put(COLUMN_LOC, contacts.getLoc());
-        values.put(COLUMN_STATUS, contacts.getStatus());
-        values.put(COLUMN_HOURS, contacts.getHours());
-        values.put(COLUMN_FULLDAY, contacts.getFullday());
-        values.put(COLUMN_HALFDAY, contacts.getHalfday());
-        values.put(COLUMN_WEATHER, contacts.getWeather());
-        values.put(COLUMN_SNOW, contacts.getSnow());
+        values.put(COLUMN_RESORT, resorts.getResort());
+        values.put(COLUMN_LOC, resorts.getLoc());
+        values.put(COLUMN_STATUS, resorts.getStatus());
+        values.put(COLUMN_HOURS, resorts.getHours());
+        values.put(COLUMN_FULLDAY, resorts.getFullday());
+        values.put(COLUMN_HALFDAY, resorts.getHalfday());
+        values.put(COLUMN_WEATHER, resorts.getWeather());
+        values.put(COLUMN_SNOW, resorts.getSnow());
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(TABLE_CONTACTS, null, values);
     }
 
-    public void updateContacts(Contacts contacts){
+    public void updateContacts(Resorts resorts){
         ContentValues values = new ContentValues();
-        values.put(COLUMN_RESORT, contacts.getResort());
-        values.put(COLUMN_LOC, contacts.getLoc());
-        values.put(COLUMN_STATUS, contacts.getStatus());
-        values.put(COLUMN_HOURS, contacts.getHours());
-        values.put(COLUMN_FULLDAY, contacts.getFullday());
-        values.put(COLUMN_HALFDAY, contacts.getHalfday());
-        values.put(COLUMN_WEATHER, contacts.getWeather());
-        values.put(COLUMN_SNOW, contacts.getSnow());
+        values.put(COLUMN_RESORT, resorts.getResort());
+        values.put(COLUMN_LOC, resorts.getLoc());
+        values.put(COLUMN_STATUS, resorts.getStatus());
+        values.put(COLUMN_HOURS, resorts.getHours());
+        values.put(COLUMN_FULLDAY, resorts.getFullday());
+        values.put(COLUMN_HALFDAY, resorts.getHalfday());
+        values.put(COLUMN_WEATHER, resorts.getWeather());
+        values.put(COLUMN_SNOW, resorts.getSnow());
         SQLiteDatabase db = this.getWritableDatabase();
-        db.update(TABLE_CONTACTS, values, COLUMN_ID	+ "	= ?", new String[] { String.valueOf(contacts.getId())});
+        db.update(TABLE_CONTACTS, values, COLUMN_ID	+ "	= ?", new String[] { String.valueOf(resorts.getId())});
     }
 
-    public Contacts findContacts(String name){
+    public Resorts findContacts(String name){
         String query = "Select * FROM "	+ TABLE_CONTACTS + " WHERE " + COLUMN_RESORT + " = " + "name";
         SQLiteDatabase db = this.getWritableDatabase();
-        Contacts contacts = null;
+        Resorts resorts = null;
         Cursor cursor = db.rawQuery(query,	null);
         if	(cursor.moveToFirst()){
             int id = Integer.parseInt(cursor.getString(0));
@@ -131,10 +130,10 @@ public class SqliteDatabase extends SQLiteOpenHelper {
             String contactsWeather = cursor.getString(7);
             String contactsSnow = cursor.getString(8);
 
-            contacts = new Contacts(id, contactsResort, contactsLoc, contactsStatus, contactsHours, contactsFullday, contactsHalfday, contactsWeather, contactsSnow);
+            resorts = new Resorts(id, contactsResort, contactsLoc, contactsStatus, contactsHours, contactsFullday, contactsHalfday, contactsWeather, contactsSnow);
         }
         cursor.close();
-        return contacts;
+        return resorts;
     }
 
     public void deleteContact(int id){

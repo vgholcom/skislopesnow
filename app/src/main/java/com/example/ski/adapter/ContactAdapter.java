@@ -1,26 +1,21 @@
 package com.example.ski.adapter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import androidx.appcompat.app.AlertDialog;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.Toast;
 
 
 import java.util.ArrayList;
 
-import com.example.ski.Contacts;
+import com.example.ski.Resorts;
 import com.example.ski.R;
 import com.example.ski.ResortActivity;
 import com.example.ski.database.SqliteDatabase;
@@ -28,14 +23,14 @@ import com.example.ski.database.SqliteDatabase;
 public class ContactAdapter extends RecyclerView.Adapter<ContactViewHolder> implements Filterable{
 
     private Context context;
-    private ArrayList<Contacts> listContacts;
-    private ArrayList<Contacts> mArrayList;
+    private ArrayList<Resorts> listResorts;
+    private ArrayList<Resorts> mArrayList;
 
     private SqliteDatabase mDatabase;
 
-    public ContactAdapter(Context context, ArrayList<Contacts> listContacts) {
+    public ContactAdapter(Context context, ArrayList<Resorts> listContacts) {
         this.context = context;
-        this.listContacts = listContacts;
+        this.listResorts = listContacts;
         this.mArrayList=listContacts;
         //mDatabase = new SqliteDatabase(context);
     }
@@ -60,10 +55,10 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactViewHolder> impl
 
     @Override
     public void onBindViewHolder(ContactViewHolder holder, int position) {
-        final Contacts contacts = listContacts.get(position);
-        Log.i("list", contacts.getResort());
+        final Resorts resorts = listResorts.get(position);
+        Log.i("list", resorts.getResort());
 
-        holder.resort.setText(contacts.getResort());
+        holder.resort.setText(resorts.getResort());
     }
 
     @Override
@@ -77,30 +72,30 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactViewHolder> impl
 
                 if (charString.isEmpty()) {
 
-                    listContacts = mArrayList;
+                    listResorts = mArrayList;
                 } else {
 
-                    ArrayList<Contacts> filteredList = new ArrayList<>();
+                    ArrayList<Resorts> filteredList = new ArrayList<>();
 
-                    for (Contacts contacts : mArrayList) {
+                    for (Resorts resorts : mArrayList) {
 
-                        if (contacts.getResort().toLowerCase().contains(charString)) {
+                        if (resorts.getResort().toLowerCase().contains(charString)) {
 
-                            filteredList.add(contacts);
+                            filteredList.add(resorts);
                         }
                     }
 
-                    listContacts = filteredList;
+                    listResorts = filteredList;
                 }
 
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = listContacts;
+                filterResults.values = listResorts;
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                listContacts = (ArrayList<Contacts>) filterResults.values;
+                listResorts = (ArrayList<Resorts>) filterResults.values;
                 notifyDataSetChanged();
             }
         };
@@ -109,7 +104,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactViewHolder> impl
 
     @Override
     public int getItemCount() {
-        return listContacts.size();
+        return listResorts.size();
     }
 
 }

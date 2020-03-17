@@ -9,7 +9,6 @@ import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private SqliteDatabase mDatabase;
-    private ArrayList<Contacts> allContacts=new ArrayList<>();
+    private ArrayList<Resorts> allResorts=new ArrayList<>();
     private ContactAdapter mAdapter;
 
     @Override
@@ -43,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
         contactView.setLayoutManager(linearLayoutManager);
         contactView.setHasFixedSize(true);
         mDatabase = new SqliteDatabase(this);
-        allContacts = mDatabase.listContacts();
+        allResorts = mDatabase.listContacts();
 
-        if(allContacts.size() > 0){
+        if(allResorts.size() > 0){
             contactView.setVisibility(View.VISIBLE);
-            mAdapter = new ContactAdapter(this, allContacts);
+            mAdapter = new ContactAdapter(this, allResorts);
             contactView.setAdapter(mAdapter);
         }else {
             contactView.setVisibility(View.GONE);
@@ -60,62 +59,13 @@ public class MainActivity extends AppCompatActivity {
                 addToDatabase();
             }
         });
-        /*
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addTaskDialog();
-            }
-        });
-         */
     }
 
     private void addToDatabase(){
         Intent intent = new Intent(this, DatabaseActivity.class);
         startActivity(intent);
     }
-/*
-    private void addTaskDialog(){
-        LayoutInflater inflater = LayoutInflater.from(this);
-        View subView = inflater.inflate(R.layout.add_contact_layout, null);
 
-        final EditText nameField = (EditText)subView.findViewById(R.id.enter_name);
-        final EditText noField = (EditText)subView.findViewById(R.id.enter_phno);
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add new CONTACT");
-        builder.setView(subView);
-        builder.create();
-
-        builder.setPositiveButton("ADD CONTACT", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                final String name = nameField.getText().toString();
-                final String ph_no = noField.getText().toString();
-
-                if(TextUtils.isEmpty(name)){
-                    Toast.makeText(MainActivity.this, "Something went wrong. Check your input values", Toast.LENGTH_LONG).show();
-                }
-                else{
-                    Contacts newContact = new Contacts(name, ph_no);
-                    mDatabase.addContacts(newContact);
-
-                    finish();
-                    startActivity(getIntent());
-                }
-            }
-        });
-
-        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(MainActivity.this, "Task cancelled", Toast.LENGTH_LONG).show();
-            }
-        });
-        builder.show();
-    }
-*/
     @Override
     protected void onDestroy() {
         super.onDestroy();

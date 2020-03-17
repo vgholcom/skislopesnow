@@ -3,7 +3,6 @@ package com.example.ski;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,7 +49,7 @@ public class DatabaseActivity extends AppCompatActivity {
                 final String weather= weatherField.getText().toString();
                 final String snow = snowField.getText().toString();
 
-                Contacts newContact = new Contacts(resort, loc, status, hours, fullday, halfday, weather, snow);
+                Resorts newContact = new Resorts(resort, loc, status, hours, fullday, halfday, weather, snow);
                 databaseHelper.addContacts(newContact);
 
                 Intent intent = new Intent(DatabaseActivity.this, MainActivity.class);
