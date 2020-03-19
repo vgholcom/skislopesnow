@@ -8,6 +8,50 @@
     android:orientation="vertical" >
 
     <TextView
+        android:id="@+id/admin"
+        android:layout_width="171dp"
+        android:layout_height="90dp"
+        android:background="@color/colorBorder"
+        android:padding="5dp"
+        android:text="Admin:"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintHorizontal_bias="0.933"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/resortSnow"
+        card_view:layout_constraintVertical_bias="0.953" />
+
+    <ImageView
+        android:id="@+id/edit_contact"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:src="@drawable/pedit"
+        card_view:layout_constraintBottom_toBottomOf="@+id/admin"
+        card_view:layout_constraintEnd_toEndOf="@+id/admin"
+        card_view:layout_constraintHorizontal_bias="0.468"
+        card_view:layout_constraintStart_toStartOf="@+id/admin"
+        card_view:layout_constraintTop_toTopOf="@+id/admin"
+        card_view:layout_constraintVertical_bias="0.777" />
+
+    <ImageView
+        android:id="@+id/delete_contact"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:src="@drawable/pdelete"
+        card_view:layout_constraintBottom_toBottomOf="@+id/admin"
+        card_view:layout_constraintEnd_toEndOf="@+id/admin"
+        card_view:layout_constraintHorizontal_bias="0.928"
+        card_view:layout_constraintStart_toStartOf="@+id/admin"
+        card_view:layout_constraintTop_toTopOf="@+id/admin"
+        card_view:layout_constraintVertical_bias="0.755" />
+
+    <TextView
         android:id="@+id/resortHalfday"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

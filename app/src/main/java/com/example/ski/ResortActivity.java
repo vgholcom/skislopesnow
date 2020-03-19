@@ -2,9 +2,19 @@ package com.example.ski;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ski.database.SqliteDatabase;
 
@@ -14,7 +24,9 @@ public class ResortActivity extends AppCompatActivity {
 
     private SqliteDatabase databaseHelper;
     private ArrayList<Resorts> allResorts=new ArrayList<>();
+    private ImageView deleteResort, editResort;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +37,7 @@ public class ResortActivity extends AppCompatActivity {
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        int position = intent.getIntExtra("message_key", 0);
+        final int position = intent.getIntExtra("message_key", 0);
         final Resorts resorts = allResorts.get(position);
 
         // Capture the layout's TextView and set the string as its text
@@ -52,5 +64,33 @@ public class ResortActivity extends AppCompatActivity {
 
         TextView snowTextView = findViewById(R.id.resortSnow);
         snowTextView.setText(resorts.getSnow());
+
+
+        deleteResort = findViewById(R.id.delete_contact);
+        deleteResort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                databaseHelper.deleteContact(resorts.getId());
+
+                // go back to main page
+                Intent intent = new Intent(ResortActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+        editResort = findViewById(R.id.edit_contact);
+        editResort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editDatabase(position);
+            }
+        });
+    }
+
+    private void editDatabase(int position){
+        Intent intent = new Intent(this, EditActivity.class);
+        intent.putExtra("message_key", position);
+        startActivity(intent);
     }
 }

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import com.example.ski.Resorts;
 
-
 public class SqliteDatabase extends SQLiteOpenHelper {
 
     private	static final int DATABASE_VERSION =	5;
@@ -85,7 +84,7 @@ public class SqliteDatabase extends SQLiteOpenHelper {
         return storeContacts;
     }
 
-    public void addContacts(Resorts resorts){
+    public void addResorts(Resorts resorts){
         ContentValues values = new ContentValues();
         values.put(COLUMN_RESORT, resorts.getResort());
         values.put(COLUMN_LOC, resorts.getLoc());
@@ -100,7 +99,7 @@ public class SqliteDatabase extends SQLiteOpenHelper {
         db.insert(TABLE_CONTACTS, null, values);
     }
 
-    public void updateContacts(Resorts resorts){
+    public void updateResorts(Resorts resorts){
         ContentValues values = new ContentValues();
         values.put(COLUMN_RESORT, resorts.getResort());
         values.put(COLUMN_LOC, resorts.getLoc());
@@ -140,4 +139,5 @@ public class SqliteDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_CONTACTS, COLUMN_ID	+ "	= ?", new String[] { String.valueOf(id)});
     }
+
 }
